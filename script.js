@@ -53,20 +53,30 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- Sequence ---
-    
-    // Falling flowers loop
-    setInterval(createFallingFlower, 400);
+    const startScreen = document.getElementById('start-screen');
+    const bgMusic = document.getElementById('bg-music');
 
-    // Show name after animation starts
-    setTimeout(() => {
-        nameText.classList.add('visible');
-    }, 1500);
+    startScreen.addEventListener('click', () => {
+        startScreen.classList.add('hidden');
+        if (bgMusic) {
+            bgMusic.play().catch(e => console.log("Audio play failed:", e));
+        }
 
-    // Show I Love You and hearts
-    setTimeout(() => {
-        messageBox.classList.add('visible');
-        setInterval(scatterHearts, 3000);
-        scatterHearts();
-    }, 4000);
+        // --- Sequence ---
+        
+        // Falling flowers loop
+        setInterval(createFallingFlower, 400);
+
+        // Show name after animation starts
+        setTimeout(() => {
+            nameText.classList.add('visible');
+        }, 1500);
+
+        // Show I Love You and hearts
+        setTimeout(() => {
+            messageBox.classList.add('visible');
+            setInterval(scatterHearts, 3000);
+            scatterHearts();
+        }, 4000);
+    });
 });
