@@ -67,16 +67,16 @@ document.addEventListener('DOMContentLoaded', () => {
         // Falling flowers loop
         setInterval(createFallingFlower, 400);
 
-        // Show name after animation starts
-        setTimeout(() => {
-            nameText.classList.add('visible');
-        }, 1500);
-
-        // Show I Love You and hearts
+        // Show I Love You and hearts first
         setTimeout(() => {
             messageBox.classList.add('visible');
             setInterval(scatterHearts, 3000);
             scatterHearts();
+        }, 1500);
+
+        // Show name later
+        setTimeout(() => {
+            nameText.classList.add('visible');
         }, 4000);
     });
 });

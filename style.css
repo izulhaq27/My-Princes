@@ -242,23 +242,32 @@ body {
 /* --- Overlay Content (Text) --- */
 .content-overlay {
     position: fixed;
-    top: 8%;
+    top: 5%; /* Adjusted higher to avoid flowers */
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
-    width: 100%;
+    width: 90%; /* Responsive width */
+    max-width: 600px;
     z-index: 100;
     pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
 }
 
 h1 {
-    font-size: 4rem;
-    font-family: 'Great Vibes', cursive;
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(1.5rem, 6vw, 2.5rem);
+    font-weight: 600;
     color: var(--text-color);
-    text-shadow: 0 0 15px rgba(76, 201, 240, 0.7), 0 0 25px rgba(255, 255, 255, 0.5);
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5), 0 0 20px rgba(76, 201, 240, 0.5);
     opacity: 0;
     transform: translateY(20px);
     transition: all 2s ease-out;
+    text-transform: capitalize;
+    margin: 0;
+    line-height: 1.2;
 }
 
 h1.visible {
@@ -270,6 +279,7 @@ h1.visible {
     opacity: 0;
     transform: translateY(20px);
     transition: all 2s ease-out;
+    width: 100%;
 }
 
 #message-box.visible {
@@ -278,16 +288,28 @@ h1.visible {
 }
 
 .love-text {
-    font-size: 3rem;
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(2.5rem, 10vw, 4rem);
     color: var(--gold);
-    text-shadow: 0 0 15px rgba(255, 235, 59, 0.6);
-    margin-top: 10px;
+    text-shadow: 0 0 15px rgba(255, 235, 59, 0.8), 0 0 5px rgba(0, 0, 0, 0.5);
+    margin: 0;
 }
 
 .heart-main {
-    font-size: 2rem;
-    margin-top: 10px;
+    font-size: clamp(1.5rem, 5vw, 2rem);
+    margin-top: 5px;
     animation: pulse 1.5s infinite;
+}
+
+/* Ensure flowers don't grow too tall on small screens */
+@media (max-height: 600px) {
+    .flowers {
+        transform: scale(0.7);
+        margin-bottom: 10px;
+    }
+    .content-overlay {
+        top: 2%;
+    }
 }
 
 @keyframes pulse {
